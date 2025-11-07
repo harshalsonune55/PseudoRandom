@@ -112,6 +112,8 @@ This file includes all design and testbench modules.
 3. **Run** the simulation:
    ```bash
    vvp my_simulation
+   iverilog -o final.vvp final_encryptor.v
+   vvp final.vvp
    ```
 
 ---
