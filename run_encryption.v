@@ -128,25 +128,31 @@ module tb_encryptor;
     end
 
     // Store the new message
-    reg [7:0] message [0:12]; // 13 characters
+    reg [7:0] message [0:18]; // 13 characters
     integer i; // Loop counter
 
     // 4. Provide the Stimulus (the test)
     initial begin
         // --- Load the message ---
-        message[0]  = 8'h68; // "h"
-        message[1]  = 8'h65; // "e"
-        message[2]  = 8'h6C; // "l"
-        message[3]  = 8'h6C; // "l"
-        message[4]  = 8'h6F; // "o"
-        message[5]  = 8'h20; // " "
-        message[6]  = 8'h77; // "w"
-        message[7]  = 8'h6F; // "o"
-        message[8]  = 8'h72; // "r"
+        message[0]  = 8'h44; 
+        message[1]  = 8'h69; 
+        message[2]  = 8'h67; 
+        message[3]  = 8'h69; 
+        message[4]  = 8'h74; 
+        message[5]  = 8'h61; 
+        message[6]  = 8'h6C; 
+        message[7]  = 8'h20; 
+        message[8]  = 8'h45;
         message[9]  = 8'h6C; // "l"
-        message[10] = 8'h64; // "d"
-        message[11] = 8'h20; // " "
-        message[12] = 8'h21; // "!"
+        message[10] = 8'h65; // "d"
+        message[11] = 8'h63; // " "
+        message[12] = 8'h74; // "!"
+        message[13] = 8'h72; // "!"
+        message[14] = 8'h6F; // "!"
+        message[15] = 8'h6E; // "!"
+        message[16] = 8'h69; 
+        message[17] = 8'h63; 
+        message[18] = 8'h73; 
 
         // --- Setup ---
         $display("Time  | Plaintext | Ciphertext | Decrypted");
@@ -158,7 +164,7 @@ module tb_encryptor;
         @(negedge clk);
 
         // --- Send the message using a loop ---
-        for (i = 0; i < 13; i = i + 1) begin
+        for (i = 0; i < 19; i = i + 1) begin
             tb_plaintext = message[i];
             @(negedge clk);
             $display("%3dns | 0x%h (%c) |   0x%h    |  0x%h (%c)", $time, 
